@@ -1,0 +1,16 @@
+{
+  "domain": "renpho_ble",
+  "name": "Renpho Bluetooth",
+  "config_flow": true,
+  "documentation": "https://www.home-assistant.io/integrations/renpho_ble",
+  "bluetooth": [
+    {
+      "manufacturer_id": 65535,
+      "connectable": false
+    }
+  ],
+  "version": "1.0",
+  "dependencies": ["bluetooth"],
+  "codeowners": ["@jdeath"],
+  "iot_class": "local_push"
+}
