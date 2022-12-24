@@ -1,9 +1,9 @@
-"""The Govee Bluetooth BLE integration."""
+"""The Renpho Bluetooth BLE integration."""
 from __future__ import annotations
 
 import logging
 
-from .parser import GoveeBluetoothDeviceData
+from .renpho_ble import RenphoBluetoothDeviceData
 
 from homeassistant.components.bluetooth import BluetoothScanningMode
 from homeassistant.components.bluetooth.passive_update_processor import (
@@ -21,10 +21,10 @@ _LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
-    """Set up Govee BLE device from a config entry."""
+    """Set up Renpho BLE device from a config entry."""
     address = entry.unique_id
     assert address is not None
-    data = GoveeBluetoothDeviceData()
+    data = RenphoBluetoothDeviceData()
     coordinator = hass.data.setdefault(DOMAIN, {})[
         entry.entry_id
     ] = PassiveBluetoothProcessorCoordinator(

@@ -1,9 +1,9 @@
-"""Support for govee ble sensors."""
+"""Support for renpho ble sensors."""
 from __future__ import annotations
 
 from typing import Optional, Union
 
-from .parser import DeviceClass, DeviceKey, SensorUpdate, Units
+from .renpho_ble import DeviceClass, DeviceKey, SensorUpdate, Units
 
 from homeassistant import config_entries
 from homeassistant.components.bluetooth.passive_update_processor import (
@@ -110,26 +110,26 @@ async def async_setup_entry(
     entry: config_entries.ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up the Govee BLE sensors."""
+    """Set up the Renpho BLE sensors."""
     coordinator: PassiveBluetoothProcessorCoordinator = hass.data[DOMAIN][
         entry.entry_id
     ]
     processor = PassiveBluetoothDataProcessor(sensor_update_to_bluetooth_data_update)
     entry.async_on_unload(
         processor.async_add_entities_listener(
-            GoveeBluetoothSensorEntity, async_add_entities
+            RenphoBluetoothSensorEntity, async_add_entities
         )
     )
     entry.async_on_unload(coordinator.async_register_processor(processor))
 
 
-class GoveeBluetoothSensorEntity(
+class RenphoBluetoothSensorEntity(
     PassiveBluetoothProcessorEntity[
         PassiveBluetoothDataProcessor[Optional[Union[float, int]]]
     ],
     SensorEntity,
 ):
-    """Representation of a govee ble sensor."""
+    """Representation of a renpho ble sensor."""
 
     @property
     def native_value(self) -> int | float | None:

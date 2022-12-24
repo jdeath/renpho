@@ -1,9 +1,9 @@
-"""Config flow for govee ble integration."""
+"""Config flow for renpho ble integration."""
 from __future__ import annotations
 
 from typing import Any
 
-from .parser import GoveeBluetoothDeviceData as DeviceData
+from .renpho_ble import RenphoBluetoothDeviceData as DeviceData
 import voluptuous as vol
 
 from homeassistant.components.bluetooth import (
@@ -17,8 +17,8 @@ from homeassistant.data_entry_flow import FlowResult
 from .const import DOMAIN
 
 
-class GoveeConfigFlow(ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for govee."""
+class RenphoConfigFlow(ConfigFlow, domain=DOMAIN):
+    """Handle a config flow for renpho."""
 
     VERSION = 1
 
