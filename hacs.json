@@ -1,0 +1,7 @@
+{
+  "name": "renpho_ble",
+  "domains": ["scale"],
+  "iot_class": "Local Push",
+  "render_readme": true,
+  "homeassistant": "2022.12.1"
+}
