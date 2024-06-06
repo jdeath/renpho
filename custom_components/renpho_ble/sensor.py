@@ -80,8 +80,8 @@ def sensor_update_to_bluetooth_data_update(
     sensor_update: SensorUpdate,
 ) -> PassiveBluetoothDataUpdate:
     """Convert a sensor update to a bluetooth data update."""
-    #_LOGGER.debug("Enter Renpho sensor_update_to_bluetooth_data_update")
-    #_LOGGER.debug("Parsing Renpho BLE service_info data: %s", sensor_update.entity_values.items())
+    # _LOGGER.debug("Enter Renpho sensor_update_to_bluetooth_data_update")
+    # _LOGGER.debug("Parsing Renpho BLE service_info data: %s", sensor_update.entity_values.items())
     return PassiveBluetoothDataUpdate(
         devices={
             device_id: sensor_device_info_to_hass_device_info(device_info)
@@ -125,7 +125,8 @@ async def async_setup_entry(
 
 class RenphoBluetoothSensorEntity(
     PassiveBluetoothProcessorEntity[
-        PassiveBluetoothDataProcessor[Optional[Union[float, int]]]
+        PassiveBluetoothDataProcessor[str | int | None, SensorUpdate]
+        #PassiveBluetoothDataProcessor[Optional[Union[float, int]]]
     ],
     SensorEntity,
 ):
